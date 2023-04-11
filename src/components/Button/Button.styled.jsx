@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 export const LoadButton = styled.button`
   display: block;
-  margin: 15px auto;
+  margin: 15px auto 40px auto;
   padding: 8px 16px;
   border-radius: 2px;
   background-color: #3f51b5;
