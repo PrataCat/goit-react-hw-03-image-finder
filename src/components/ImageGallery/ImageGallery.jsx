@@ -23,12 +23,19 @@ class ImageGallery extends Component {
     const currPage = this.state.page;
     const prevPage = prevState.page;
 
-    if (
-      (prevKeyWord !== newKeyWord && currPage === 1) ||
-      (prevKeyWord !== newKeyWord && currPage !== 1)
-    ) {
+    if (prevKeyWord !== newKeyWord && currPage === 1) {
       this.imageArrReset();
+      this.getImages();
+      return;
+    }
+
+    if (prevKeyWord !== newKeyWord && currPage !== 1) {
       this.pageReset();
+      return;
+    }
+
+    if (prevKeyWord === newKeyWord && currPage !== prevPage && currPage === 1) {
+      this.imageArrReset();
       this.getImages();
     }
 
@@ -67,8 +74,6 @@ class ImageGallery extends Component {
         disabledBtn: false,
         error: 'Ooops, something went wrong. Restart the application.',
       });
-
-      console.error();
     }
 
     this.isLoadingToggle();
